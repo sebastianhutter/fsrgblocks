@@ -26,8 +26,7 @@ if (!defined('ABSPATH')) {
  */
 function fsrg_fsrgblocks_block_init()
 {
-	// TODO: rmeove original block registration
-	register_block_type(__DIR__ . '/build/original-block');
 	register_block_type(__DIR__ . '/build/list-tour-dates-of-season');
+	register_block_type(__DIR__ . '/build/list-all-tour-dates-of-current-year');
 }
 add_action('init', 'fsrg_fsrgblocks_block_init');

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "fsrg/list-all-tour-dates-of-current-year",
+  "version": "0.1.0",
+  "title": "Zeige alle oeffentlichen Rundgaenge per Monat",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Zeige alle Rundgaenge des aktuellen Jahres nach Monat",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "fsrgblocks",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
