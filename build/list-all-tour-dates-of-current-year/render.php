@@ -60,6 +60,11 @@ foreach ($months as $key => $value) {
 			);
 		}
 	}
+	// sort the dates for the month
+	usort($dates_for_month, function ($a, $b) {
+		return $a["date"] <=> $b["date"];
+	});
+
 	$flattenedTourDates[$value] = $dates_for_month;
 }
 
