@@ -11,7 +11,7 @@ class TourDateEntry
 	public string $title;
 	public string $description;
 
-	public function __construct($date, $ticket_link, string $title = "", string $description = "")
+	public function __construct($date, $ticket_link = "", string $title = "", string $description = "")
 	{
 		$this->date = new DateTime($date);
 		$this->ticket_link = $ticket_link;
@@ -52,7 +52,13 @@ class TourDateEntry
 				break;
 		}
 
-		return "$shortDay. $date_formatted, $time_formatted Uhr";
+		// if hour, minutes are all 0, we can assume that the time is not set
+		// and we can skip the time part
+		$timestamp_string = "$shortDay. $date_formatted";
+		if ($time_formatted !== "00:00") {
+			$timestamp_string .= ", $time_formatted Uhr";
+		}
+		return $timestamp_string;
 	}
 
 	public function get_ticket_link(): string
@@ -76,6 +82,11 @@ class TourDateEntry
 		if ($this->title) {
 			$rendered_text = $this->title;
 		}
+
+		if (empty($this->ticket_link)) {
+			return $rendered_text . ' ' . $this->render_ticket_description();
+		}
+
 		return '<a href="' . esc_url($this->ticket_link) . '" target="_blank" rel="noreferrer noopener">' . $rendered_text . ' ' . $this->render_ticket_description() . '</a>';
 	}
 }
