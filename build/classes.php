@@ -20,8 +20,8 @@ class TourDateEntry
 	{
 		// renders the date in the format Sa 30.11.2024 00:00 Uhr
 
-		$timestamp_formatted = $this->date->format("d.m.Y H:i");
-		$timestamp_string = "$timestamp_formatted Uhr";
+		$date_formatted = $this->date->format("d.m.Y");
+		$time_formatted = $this->date->format("H:i");
 		$shortDay = "";
 		switch ($this->date->format('N')) {
 			case 1:
@@ -47,7 +47,7 @@ class TourDateEntry
 				break;
 		}
 
-		return "$shortDay $timestamp_string";
+		return "$shortDay. $date_formatted, $time_formatted Uhr";
 	}
 
 	public function get_ticket_link(): string

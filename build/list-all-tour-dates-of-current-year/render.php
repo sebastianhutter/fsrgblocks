@@ -70,8 +70,6 @@ foreach ($flattenedTourDates as $key => $value) {
 	}
 	$monthlyTourDates[$key] = $value;
 }
-
-var_dump($monthlyTourDates);
 ?>
 
 <?php foreach ($monthlyTourDates as $m => $values) { ?>
