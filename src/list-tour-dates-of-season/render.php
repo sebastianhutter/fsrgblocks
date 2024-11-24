@@ -35,9 +35,7 @@ $tour_dates = new TourDates();
 	<?php foreach ($tour_dates->return_tour_dates_for_year($seasonYear) as $tour_date) { ?>
 		<li class="fsrg-block-list-tour-dates-of-season-entry">
 			<?php echo esc_html_e($tour_date->render_timestamp_string()); ?>:
-			<a href="<?php echo esc_url($tour_date->get_ticket_link()); ?>" target="_blank" rel="noreferrer noopener">
-				<?php echo esc_html_e($linkText); ?>
-			</a>
+			<?php echo $tour_date->render_ticket_link($linkText) ?>
 		</li>
 	<?php } ?>
 </ul>

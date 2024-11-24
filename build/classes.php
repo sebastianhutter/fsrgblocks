@@ -8,14 +8,16 @@ class TourDateEntry
 	public string $month;
 	public string $ticket_link;
 
+	public string $title;
 	public string $description;
 
-	public function __construct($date, $ticket_link, string $description = "")
+	public function __construct($date, $ticket_link, string $title = "", string $description = "")
 	{
 		$this->date = new DateTime($date);
 		$this->ticket_link = $ticket_link;
 		$this->year = $this->date->format('Y');
 		$this->month = $this->date->format('m');
+		$this->title = $title;
 		$this->description = $description;
 	}
 
@@ -66,6 +68,16 @@ class TourDateEntry
 
 		return "";
 	}
+
+	public function render_ticket_link(string $text): string
+	{
+
+		$rendered_text = $text;
+		if ($this->title) {
+			$rendered_text = $this->title;
+		}
+		return '<a href="' . esc_url($this->ticket_link) . '" target="_blank" rel="noreferrer noopener">' . $rendered_text . ' ' . $this->render_ticket_description() . '</a>';
+	}
 }
 class TourDates
 {
@@ -89,6 +101,7 @@ class TourDates
 			$tour_dates[] = new TourDateEntry(
 				$entry[FSRG_RUNDGANG_TERMIN_DATE_AND_TIME_FIELD],
 				$entry[FSRG_RUNDGANG_TERMIN_TICKET_LINK_FIELD],
+				$entry[FSRG_RUNDGANG_TERMIN_TITEL_FIELD],
 				$entry[FSRG_RUNDGANG_TERMIN_BESCHREIBUNG_FIELD],
 			);
 		}

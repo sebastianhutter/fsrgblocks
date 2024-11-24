@@ -53,16 +53,18 @@ foreach ($months as $key => $value) {
 	foreach ($pagesWithTourDatesArray as $k2 => $page) {
 		foreach ($page["tour_dates"]->return_tour_dates_for_year_and_month($seasonYear, $key) as $date) {
 			$dates_for_month[] = array(
+				"_date_for_sorting" => $date->date,
 				"date" => $date->render_timestamp_string(),
-				"ticket_link" => $date->get_ticket_link(),
-				"ticket_text" => $page["title"],
-				"ticket_description" => $date->render_ticket_description(),
+				// "ticket_link" => $date->get_ticket_link(),
+				// "ticket_text" => $page["title"],
+				// "ticket_description" => $date->render_ticket_description(),
+				"ticket_link" => $date->render_ticket_link($page["title"]),
 			);
 		}
 	}
 	// sort the dates for the month
 	usort($dates_for_month, function ($a, $b) {
-		return $a["date"] <=> $b["date"];
+		return $a["_date_for_sorting"] <=> $b["_date_for_sorting"];
 	});
 
 	$flattenedTourDates[$value] = $dates_for_month;
@@ -87,10 +89,7 @@ foreach ($flattenedTourDates as $key => $value) {
 			<?php foreach ($values as $value) { ?>
 				<li class="fsrg-block-list-all-tour-dates-of-current-year-entry">
 					<?php echo esc_html_e($value["date"]); ?>:
-					<a href="<?php echo esc_url($value["ticket_link"]); ?>" target="_blank" rel="noreferrer noopener">
-						<?php echo esc_html_e($value["ticket_text"]); ?>
-						<?php echo esc_html_e($value["ticket_description"]); ?>
-					</a>
+					<?php echo $value["ticket_link"] ?>
 				</li>
 			<?php } ?>
 		</ul>
