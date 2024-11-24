@@ -6,6 +6,7 @@
 define("FSRG_RUNDGANG_TERMIN_GROUP_FIELD", "rundgang_termin");
 define("FSRG_RUNDGANG_TERMIN_DATE_AND_TIME_FIELD", "datum_und_zeit");
 define("FSRG_RUNDGANG_TERMIN_TICKET_LINK_FIELD", "ticket_link");
+define("FSRG_RUNDGANG_TERMIN_BESCHREIBUNG_FIELD", "beschreibung");
 
 // predefined wp block fields, defined as templates on the website
 define("FSRG_BLOCK_SPACER_ALLE_25_REF", "<!-- wp:block {\"ref\":30124} /-->");
