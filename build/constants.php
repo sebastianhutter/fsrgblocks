@@ -11,9 +11,4 @@ define("FSRG_RUNDGANG_TERMIN_TICKET_LINK_FIELD", "ticket_link");
 define("FSRG_BLOCK_SPACER_ALLE_25_REF", "<!-- wp:block {\"ref\":30124} /-->");
 define("FSRG_BLOCK_SPACER_ALLE_10_REF", "<!-- wp:block {\"ref\":30132} /-->");
 
-
-// functions for the custom fields
-
-
-
 ?>

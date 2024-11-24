@@ -7,19 +7,13 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-fsrg-fsrgblocks {
-  background-color: #21759b;
-  color: #fff;
-  padding: 2px;
-}
-
-ul.fsrg-block-list-tour-dates-of-season-list {
+ul.fsrg-block-list-all-tour-dates-of-current-year-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li.fsrg-block-list-tour-dates-of-season-entry {
+li.fsrg-block-list-all-tour-dates-of-current-year-entry {
   margin: 0 0 6px 0;
 }
 

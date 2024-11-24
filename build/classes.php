@@ -5,6 +5,7 @@ class TourDateEntry
 {
 	public DateTime $date;
 	public string $year;
+	public string $month;
 	public string $ticket_link;
 
 	public function __construct($date, $ticket_link)
@@ -12,6 +13,7 @@ class TourDateEntry
 		$this->date = new DateTime($date);
 		$this->ticket_link = $ticket_link;
 		$this->year = $this->date->format('Y');
+		$this->month = $this->date->format('m');
 	}
 
 	public function render_timestamp_string(): string
@@ -77,6 +79,18 @@ class TourDates
 		return $tour_dates;
 	}
 
+	private function sort_by_date(array $tour_dates): array
+	{
+		if (empty($tour_dates)) {
+			return [];
+		}
+
+		usort($tour_dates, function ($a, $b) {
+			return $a->date <=> $b->date;
+		});
+		return $tour_dates;
+	}
+
 	public function has_tour_dates_for_year(string $year): bool
 	{
 		foreach ($this->tour_dates as $tour_date) {
@@ -84,6 +98,8 @@ class TourDates
 				return true;
 			}
 		}
+
+		return false;
 	}
 
 	public function return_tour_dates_for_year(string $year): array
@@ -94,7 +110,25 @@ class TourDates
 				$dates[] = $tour_date;
 			}
 		}
-		return $dates;
+
+		return $this->sort_by_date($dates);
+	}
+
+	public function return_tour_dates_for_year_and_month(string $year, string $month): array
+	{
+		$dates = [];
+		foreach ($this->tour_dates as $tour_date) {
+			if ($tour_date->year === $year && $tour_date->month === $month) {
+				$dates[] = $tour_date;
+			}
+		}
+
+		// sort the dates by date
+		usort($dates, function ($a, $b) {
+			return $a->date <=> $b->date;
+		});
+
+		return $this->sort_by_date($dates);
 	}
 }
 
