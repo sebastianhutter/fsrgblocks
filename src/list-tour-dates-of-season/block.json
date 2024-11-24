@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fsrg/list-tour-dates-of-season",
+	"version": "0.1.0",
+	"title": "Zeige Rundgang Termine der ausgewaehlten Saison fuer den aktuellen Rundgang",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Liste all Rundgang Termine der ausgewaehlten Saison fuer den aktuellen Rundgang",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "fsrgblocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"header": {
+			"type": "string",
+			"default": "Öffentliche Rundgänge Saison"
+		},
+		"linkText": {
+			"type": "string",
+			"default": "Tickets"
+		},
+		"noEntriesFoundText": {
+			"type": "string",
+			"default": "Keine Rundgänge gefunden"
+		},
+		"seasonYear": {
+			"type": "integer"
+		}
+	}
+}

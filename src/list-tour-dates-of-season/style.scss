@@ -1,0 +1,26 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-fsrg-fsrgblocks {
+	background-color: #21759b;
+	color: #fff;
+	padding: 2px;
+}
+
+// css entries for list-tour-dates-of-season block
+p.fsrg-block-list-tour-dates-of-season-header {}
+
+
+ul.fsrg-block-list-tour-dates-of-season-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+li.fsrg-block-list-tour-dates-of-season-entry {
+	margin: 0 0 6px 0;
+}
