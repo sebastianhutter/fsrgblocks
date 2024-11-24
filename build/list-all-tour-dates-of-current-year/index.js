@@ -17,8 +17,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/list-all-tour-dates-of-current-year/editor.scss");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
 /**
  * Retrieves the translation of text.
  *
@@ -51,14 +53,35 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 
+
+
 function Edit({
   attributes,
   setAttributes
 }) {
-  const year = new Date().getFullYear();
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+  // allow selection of the next 20 years for the tour date
+
+  const blockYear = attributes.seasonYear ? attributes.seasonYear : new Date().getFullYear();
+  const years = Array.from({
+    length: 20
+  }, (v, k) => new Date().getFullYear() + k);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: "Zeige alle Tourdaten des Jahres " + year
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Waehle das Saison-Jahr aus', 'fsrgblocks'),
+      value: blockYear,
+      options: years.map(year => {
+        return {
+          label: year,
+          value: year
+        };
+      }),
+      onChange: value => setAttributes({
+        seasonYear: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("i", {
+      children: ["Zeige alle Rundgaegnge fuer das Jahr ", blockYear]
+    })]
   });
 }
 
@@ -166,6 +189,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/i18n":
 /*!******************************!*\
   !*** external ["wp","i18n"] ***!
@@ -182,7 +215,7 @@ module.exports = window["wp"]["i18n"];
   \************************************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"fsrg/list-all-tour-dates-of-current-year","version":"0.1.0","title":"Zeige alle oeffentlichen Rundgaenge per Monat","category":"widgets","icon":"smiley","description":"Zeige alle Rundgaenge des aktuellen Jahres nach Monat","example":{},"supports":{"html":false},"textdomain":"fsrgblocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"fsrg/list-all-tour-dates-of-current-year","version":"0.1.0","title":"Zeige alle oeffentlichen Rundgaenge per Monat","category":"widgets","icon":"smiley","description":"Zeige alle Rundgaenge des aktuellen Jahres nach Monat","example":{},"supports":{"html":false},"textdomain":"fsrgblocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"seasonYear":{"type":"integer"}}}');
 
 /***/ })
 

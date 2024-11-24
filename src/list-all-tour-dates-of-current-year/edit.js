@@ -30,12 +30,27 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 
+import { SelectControl } from '@wordpress/components';
+
 export default function Edit({attributes, setAttributes}) {
-	const year = new Date().getFullYear();
+
+
+	// allow selection of the next 20 years for the tour date
+
+	const blockYear = attributes.seasonYear ? attributes.seasonYear : new Date().getFullYear();
+	const years = Array.from({length: 20}, (v, k) => new Date().getFullYear() + k);
 
 	return (
 		<div { ...useBlockProps() }>
-			{ "Zeige alle Tourdaten des Jahres " + year }
+			<SelectControl
+				label={ __( 'Waehle das Saison-Jahr aus', 'fsrgblocks' ) }
+				value={ blockYear }
+				options={ years.map( year => {
+					return { label: year, value: year }
+				} ) }
+				onChange={ ( value ) => setAttributes({ seasonYear: value })}
+			/>
+			<i>Zeige alle Rundgaegnge fuer das Jahr {blockYear}</i>
 		</div>
 	);
 }
