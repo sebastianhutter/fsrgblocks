@@ -1,6 +1,20 @@
 <?php
 include_once(plugin_dir_path(__FILE__) . "constants.php");
 
+// helper functiuon sorting objects by date
+function sort_by_date(array $tour_dates): array
+{
+	if (empty($tour_dates)) {
+		return [];
+	}
+
+	usort($tour_dates, function ($a, $b) {
+		return $a->date <=> $b->date;
+	});
+	return $tour_dates;
+}
+
+// tour date entry for a specific event
 class TourDateEntry
 {
 	public DateTime $date;
@@ -96,21 +110,39 @@ class TourDateEntry
 		return '<a href="' . esc_url($this->ticket_link) . '" target="_blank" rel="noreferrer noopener">' . $rendered_text . ' ' . $this->render_ticket_description() . '</a>';
 	}
 }
+
+// Tour Dates for a specific event
 class TourDates
 {
 	private $post_id;
-	public array $tour_dates = [];
+	private string $title;
+	private bool $show_in_homepage_carousel;
+	private string $carousel_picture;
+	private array $tour_dates = [];
 	public function __construct($post_id = null)
 	{
 		$this->post_id = $post_id;
-		$this->tour_dates = $this->get_tour_date_fields();
+		$this->title = get_the_title($post_id);
+		$this->set_tour_date_fields();
+		$this->set_carousel_picture();
+		$this->set_show_in_home_carousel();
 	}
 
-	private function get_tour_date_fields(): array
+	private function set_carousel_picture(): void
+	{
+		$this->carousel_picture = get_field(FSRG_RUNDGANG_CAROUSEL_PICTURE_FIELD, $this->post_id);
+	}
+
+	private function set_show_in_home_carousel(): void
+	{
+		$this->show_in_homepage_carousel = get_field(FSRG_RUNDGANG_CAROUSEL_SHOW_ON_HOMEPAGE_FIELD, $this->post_id);
+	}
+
+	private function set_tour_date_fields(): void
 	{
 		$entries = get_field(FSRG_RUNDGANG_TERMIN_GROUP_FIELD, $this->post_id);
 		if (empty($entries)) {
-			return [];
+			return;
 		}
 
 		$tour_dates = [];
@@ -124,19 +156,7 @@ class TourDates
 				$entry[FSRG_RUNDGANG_TERMIN_HOMEPAGE_PICTURE_FIELD],
 			);
 		}
-		return $tour_dates;
-	}
-
-	private function sort_by_date(array $tour_dates): array
-	{
-		if (empty($tour_dates)) {
-			return [];
-		}
-
-		usort($tour_dates, function ($a, $b) {
-			return $a->date <=> $b->date;
-		});
-		return $tour_dates;
+		$this->tour_dates = $tour_dates;
 	}
 
 	public function has_tour_dates_for_year(string $year): bool
@@ -159,7 +179,7 @@ class TourDates
 			}
 		}
 
-		return $this->sort_by_date($dates);
+		return sort_by_date($dates);
 	}
 
 	public function return_tour_dates_for_year_and_month(string $year, string $month): array
@@ -176,8 +196,47 @@ class TourDates
 			return $a->date <=> $b->date;
 		});
 
-		return $this->sort_by_date($dates);
+		return sort_by_date($dates);
+	}
+
+	public function get_title(): string
+	{
+		return $this->title;
 	}
 }
+
+
+// tour dates for all events found on the website!
+// this is a helper class to get all tour dates for all events on the website
+// used to display the list of next events in "unsere rundgaenge" and to render
+// the homepage carousel
+class AllTourDates
+{
+	private $tours = [];
+
+	public function __construct()
+	{
+		$pages_with_tours = $this->get_published_pages_with_tour_dates();
+		foreach ($pages_with_tours as $page) {
+			$this->tours[] = new TourDates($page->ID);
+		}
+	}
+
+	private function get_published_pages_with_tour_dates(): array
+	{
+		return get_posts(array(
+			'posts_per_page' => -1,
+			'post_type' => 'page',
+			'post_status' => 'publish',
+			'meta_key' => FSRG_RUNDGANG_TERMIN_GROUP_FIELD,
+		));
+	}
+
+	public function get_tours(): array
+	{
+		return $this->tours;
+	}
+}
+
 
 ?>

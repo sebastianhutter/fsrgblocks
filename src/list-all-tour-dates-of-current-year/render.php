@@ -13,23 +13,8 @@ include_once(plugin_dir_path(__FILE__) . "/../classes.php");
 // get the defined year from the wordpress block
 $seasonYear = $attributes['seasonYear'] ?? date('Y');
 
-$pagesWithTourDates = get_posts(array(
-	'posts_per_page' => -1,
-	'post_type' => 'page',
-	'meta_key' => FSRG_RUNDGANG_TERMIN_GROUP_FIELD,
-));
 
-// iterate over the returned list and prepare an array containing the title, id and all registered tour dates
-$pagesWithTourDatesArray = [];
-foreach ($pagesWithTourDates as $page) {
-	if ($page->post_type == 'page' && $page->post_status == 'publish') {
-		$pagesWithTourDatesArray[] = array(
-			'id' => $page->ID,
-			'title' => $page->post_title,
-			'tour_dates' => new TourDates($page->ID),
-		);
-	}
-}
+$all_tours = new AllTourDates();
 
 // create a flattened list for each month (semi hardcoded to ensure german output)
 $months = array(
@@ -50,15 +35,12 @@ $months = array(
 $flattenedTourDates = [];
 foreach ($months as $key => $value) {
 	$dates_for_month = [];
-	foreach ($pagesWithTourDatesArray as $k2 => $page) {
-		foreach ($page["tour_dates"]->return_tour_dates_for_year_and_month($seasonYear, $key) as $date) {
+	foreach ($all_tours->get_tours() as $tour) {
+		foreach ($tour->return_tour_dates_for_year_and_month($seasonYear, $key) as $date) {
 			$dates_for_month[] = array(
 				"_date_for_sorting" => $date->date,
 				"date" => $date->render_timestamp_string(),
-				// "ticket_link" => $date->get_ticket_link(),
-				// "ticket_text" => $page["title"],
-				// "ticket_description" => $date->render_ticket_description(),
-				"ticket_link" => $date->render_ticket_link($page["title"]),
+				"ticket_link" => $date->render_ticket_link($tour->get_title()),
 			);
 		}
 	}

@@ -7,7 +7,6 @@
 
 <?php
 
-include_once(plugin_dir_path(__FILE__) . "/../constants.php");
 include_once(plugin_dir_path(__FILE__) . "/../classes.php");
 
 // get attributes from block

@@ -11,7 +11,6 @@ wp_enqueue_script('Swiper', 'https://cdn.jsdelivr.net/npm/swiper@11.1.15/swiper-
 ?>
 
 <?php
-include_once(plugin_dir_path(__FILE__) . "/../constants.php");
 include_once(plugin_dir_path(__FILE__) . "/../classes.php");
 
 // get attributes from block
@@ -19,12 +18,9 @@ $header = $attributes['header'];
 $buttonText = $attributes['buttonText'];
 $tourCount = $attributes['tourCount'];
 
-var_dump($tourCount);
-var_dump($buttonText);
-var_dump($header);
+// $tour_dates = new TourDates();
 
-$tour_dates = new TourDates();
-
+$all_tours = new AllTourDates();
 ?>
 
 
