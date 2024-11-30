@@ -18,9 +18,39 @@ $header = $attributes['header'];
 $buttonText = $attributes['buttonText'];
 $tourCount = $attributes['tourCount'];
 
-// $tour_dates = new TourDates();
-
 $all_tours = new AllTourDates();
+
+// get all tour dates which should be displayed in the slider
+$allSliderEntries = [];
+foreach ($all_tours->get_tours() as $tour) {
+	if (!$tour->is_displayed_in_homepage_carousel()) {
+		continue;
+	}
+
+	foreach ($tour->get_all_future_tour_dates() as $tourdate) {
+		if (!$tourdate->is_displayed_in_homepage_carousel()) {
+			continue;
+		}
+		$allSliderEntries[] = array(
+			"_date_for_sorting" => $tourdate->date,
+			"date" => $tourdate->render_timestamp_string(),
+			"tour_link" => $tour->get_perma_link(),
+			"ticket_link" => $tourdate->get_ticket_link(),
+			"tour_title" => $tour->get_title(),
+		);
+	}
+
+	// sort the entries
+	usort($allSliderEntries, function ($a, $b) {
+		return $a["_date_for_sorting"] <=> $b["_date_for_sorting"];
+	});
+}
+
+// get the first $tourCount entries
+$allSliderEntries = array_slice($allSliderEntries, 0, $tourCount);
+
+var_dump($allSliderEntries);
+
 ?>
 
 

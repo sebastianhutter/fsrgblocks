@@ -109,6 +109,11 @@ class TourDateEntry
 
 		return '<a href="' . esc_url($this->ticket_link) . '" target="_blank" rel="noreferrer noopener">' . $rendered_text . ' ' . $this->render_ticket_description() . '</a>';
 	}
+
+	public function is_displayed_in_homepage_carousel(): bool
+	{
+		return $this->show_in_homepage_carousel;
+	}
 }
 
 // Tour Dates for a specific event
@@ -116,6 +121,8 @@ class TourDates
 {
 	private $post_id;
 	private string $title;
+	private string $perma_link;
+
 	private bool $show_in_homepage_carousel;
 	private string $carousel_picture;
 	private array $tour_dates = [];
@@ -123,6 +130,7 @@ class TourDates
 	{
 		$this->post_id = $post_id;
 		$this->title = get_the_title($post_id);
+		$this->perma_link = get_permalink($post_id);
 		$this->set_tour_date_fields();
 		$this->set_carousel_picture();
 		$this->set_show_in_home_carousel();
@@ -202,6 +210,32 @@ class TourDates
 	public function get_title(): string
 	{
 		return $this->title;
+	}
+
+	public function is_displayed_in_homepage_carousel(): bool
+	{
+		return $this->show_in_homepage_carousel;
+	}
+
+	public function get_all_future_tour_dates(): array
+	{
+		// return any dates with a date either today or in the future
+		$today = new DateTime("now");
+		$today->setTime(0, 0, 0);
+
+		$dates = [];
+		foreach ($this->tour_dates as $tour_date) {
+			if ($tour_date->date >= $today) {
+				$dates[] = $tour_date;
+			}
+		}
+
+		return sort_by_date($dates);
+	}
+
+	public function get_perma_link(): string
+	{
+		return $this->perma_link;
 	}
 }
 
