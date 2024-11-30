@@ -14,6 +14,44 @@ function sort_by_date(array $tour_dates): array
 	return $tour_dates;
 }
 
+function render_timestamp_string(DateTime $date): string
+{
+	$date_formatted = $date->format("d.m.Y");
+	$time_formatted = $date->format("H:i");
+	$shortDay = "";
+	switch ($date->format('N')) {
+		case 1:
+			$shortDay = "Mo";
+			break;
+		case 2:
+			$shortDay = "Di";
+			break;
+		case 3:
+			$shortDay = "Mi";
+			break;
+		case 4:
+			$shortDay = "Do";
+			break;
+		case 5:
+			$shortDay = "Fr";
+			break;
+		case 6:
+			$shortDay = "Sa";
+			break;
+		case 7:
+			$shortDay = "So";
+			break;
+	}
+
+	// if hour, minutes are all 0, we can assume that the time is not set
+	// and we can skip the time part
+	$timestamp_string = "$shortDay. $date_formatted";
+	if ($time_formatted !== "00:00") {
+		$timestamp_string .= ", $time_formatted Uhr";
+	}
+	return $timestamp_string;
+}
+
 // tour date entry for a specific event
 class TourDateEntry
 {
@@ -41,78 +79,42 @@ class TourDateEntry
 
 	}
 
-	public function render_timestamp_string(): string
+	public function get_ticket_link(): ?string
 	{
-		// renders the date in the format Sa 30.11.2024 00:00 Uhr
-
-		$date_formatted = $this->date->format("d.m.Y");
-		$time_formatted = $this->date->format("H:i");
-		$shortDay = "";
-		switch ($this->date->format('N')) {
-			case 1:
-				$shortDay = "Mo";
-				break;
-			case 2:
-				$shortDay = "Di";
-				break;
-			case 3:
-				$shortDay = "Mi";
-				break;
-			case 4:
-				$shortDay = "Do";
-				break;
-			case 5:
-				$shortDay = "Fr";
-				break;
-			case 6:
-				$shortDay = "Sa";
-				break;
-			case 7:
-				$shortDay = "So";
-				break;
+		if (empty($this->ticket_link)) {
+			return null;
 		}
-
-		// if hour, minutes are all 0, we can assume that the time is not set
-		// and we can skip the time part
-		$timestamp_string = "$shortDay. $date_formatted";
-		if ($time_formatted !== "00:00") {
-			$timestamp_string .= ", $time_formatted Uhr";
-		}
-		return $timestamp_string;
-	}
-
-	public function get_ticket_link(): string
-	{
 		return $this->ticket_link;
 	}
 
-	public function render_ticket_description(): string
-	{
-		if ($this->description) {
-			return "($this->description)";
-		}
-
-		return "";
-	}
-
-	public function render_ticket_link(string $text): string
+	public function get_description(): ?string
 	{
 
-		$rendered_text = $text;
-		if ($this->title) {
-			$rendered_text = $this->title;
+		if (empty($this->description)) {
+			return null;
 		}
-
-		if (empty($this->ticket_link)) {
-			return $rendered_text . ' ' . $this->render_ticket_description();
-		}
-
-		return '<a href="' . esc_url($this->ticket_link) . '" target="_blank" rel="noreferrer noopener">' . $rendered_text . ' ' . $this->render_ticket_description() . '</a>';
+		return $this->description;
 	}
 
 	public function is_displayed_in_homepage_carousel(): bool
 	{
 		return $this->show_in_homepage_carousel;
+	}
+
+	public function get_carousel_picture(): ?string
+	{
+		if (empty($this->carousel_picture)) {
+			return null;
+		}
+		return $this->carousel_picture;
+	}
+
+	public function get_title(): ?string
+	{
+		if (empty($this->title)) {
+			return null;
+		}
+		return $this->title;
 	}
 }
 
@@ -236,6 +238,11 @@ class TourDates
 	public function get_perma_link(): string
 	{
 		return $this->perma_link;
+	}
+
+	public function get_carousel_picture(): ?string
+	{
+		return $this->carousel_picture;
 	}
 }
 

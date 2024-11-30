@@ -32,9 +32,28 @@ $tour_dates = new TourDates();
 		</li>
 	<?php } ?>
 	<?php foreach ($tour_dates->return_tour_dates_for_year($seasonYear) as $tour_date) { ?>
+
+		<?php
+		// prepare the link text
+		$link_text = $linkText;
+		if ($tour_date->get_title()) {
+			$link_text = $tour_date->get_title();
+			if ($tour_date->get_description()) {
+				$link_text .= " (" . $tour_date->get_description() . ")";
+			}
+		}
+		?>
+
 		<li class="fsrg-block-list-tour-dates-of-season-entry">
-			<?php echo esc_html_e($tour_date->render_timestamp_string()); ?>:
-			<?php echo $tour_date->render_ticket_link($linkText) ?>
+			<?php echo esc_html_e(render_timestamp_string($tour_date->date)); ?>:
+
+			<?php if ($tour_date->get_ticket_link()) { ?>
+				<a href="<?php echo esc_url($tour_date->get_ticket_link()); ?>" target="_blank" rel="noreferrer noopener">
+				<?php } ?>
+				<?php echo $link_text; ?>
+				<?php if ($tour_date->get_ticket_link()) { ?>
+				</a>
+			<?php } ?>
 		</li>
 	<?php } ?>
 </ul>

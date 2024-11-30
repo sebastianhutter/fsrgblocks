@@ -39,8 +39,10 @@ foreach ($months as $key => $value) {
 		foreach ($tour->return_tour_dates_for_year_and_month($seasonYear, $key) as $date) {
 			$dates_for_month[] = array(
 				"_date_for_sorting" => $date->date,
-				"date" => $date->render_timestamp_string(),
-				"ticket_link" => $date->render_ticket_link($tour->get_title()),
+				"date" => render_timestamp_string($date->date),
+				"ticket_link_text" => $date->get_title() ? $date->get_title() : $tour->get_title(),
+				"ticket_link_description" => $date->get_description() ? $date->get_description() : null,
+				"ticket_link" => $date->get_ticket_link(),
 			);
 		}
 	}
@@ -69,9 +71,22 @@ foreach ($flattenedTourDates as $key => $value) {
 		<?php echo do_blocks(FSRG_BLOCK_SPACER_ALLE_10_REF); ?>
 		<ul class="wp-block-list fsrg-block-list-all-tour-dates-of-current-year-list">
 			<?php foreach ($values as $value) { ?>
+				<?php
+				// prepare the link text
+				$link_text = $value["ticket_link_text"];
+				if ($value["ticket_link_description"]) {
+					$link_text .= " (" . $value["ticket_link_description"] . ")";
+				}
+				?>
 				<li class="fsrg-block-list-all-tour-dates-of-current-year-entry">
 					<?php echo esc_html_e($value["date"]); ?>:
-					<?php echo $value["ticket_link"] ?>
+					<?php if ($value["ticket_link"]) { ?>
+						<a href="<?php echo esc_url($value["ticket_link"]); ?>" target="_blank" rel="noreferrer noopener">
+						<?php } ?>
+						<?php echo $link_text; ?>
+						<?php if ($value["ticket_link"]) { ?>
+						</a>
+					<?php } ?>
 				</li>
 			<?php } ?>
 		</ul>
