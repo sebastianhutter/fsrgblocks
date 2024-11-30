@@ -93,14 +93,19 @@ export default function Edit({ attributes, setAttributes }) {
 				onChange={(value) => setAttributes({ widthValueMobile: value })}
 			/>
 			<TextControl
-				label={__('Farbe fuer den aktiven Paginator (punkt)', 'fsrgblocks')}
-				value={attributes.paginationColorActive}
-				onChange={(value) => setAttributes({ paginationColorActive: value })}
+				label={__('Farbe fuer aktiven Paginator und Textrand', 'fsrgblocks')}
+				value={attributes.colorActive}
+				onChange={(value) => setAttributes({ colorActive: value })}
 			/>
 			<TextControl
 				label={__('Farbe fuer den inaktiven Paginator (punkt)', 'fsrgblocks')}
-				value={attributes.paginationColorInactive}
-				onChange={(value) => setAttributes({ paginationColorInactive: value })}
+				value={attributes.colorInactive}
+				onChange={(value) => setAttributes({ colorInactive: value })}
+			/>
+			<TextControl
+				label={__('Farbe fuer den Text in den Slides', 'fsrgblocks')}
+				value={attributes.colorText}
+				onChange={(value) => setAttributes({ colorText: value })}
 			/>
 
 			<i>Zeige die naechsten {attributes.tourCount} Rundgaegnge im Karousel</i>

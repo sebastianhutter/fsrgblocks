@@ -26,8 +26,9 @@ $heightValueDesktop = $attributes['heightValueDesktop'];
 $widthValueDesktop = $attributes['widthValueDesktop'];
 $heightValueMobile = $attributes['heightValueMobile'];
 $widthValueMobile = $attributes['widthValueMobile'];
-$paginationColorActive = $attributes['paginationColorActive'];
-$paginationColorInactive = $attributes['paginationColorInactive'];
+$colorActive = $attributes['colorActive'];
+$colorInactive = $attributes['colorInactive'];
+$colorText = $attributes['colorText'];
 
 
 // add styles for scss
@@ -36,8 +37,9 @@ $styles .= "--fsrg-slider-height-desktop: " . $heightValueDesktop . $heightUnit 
 $styles .= "--fsrg-slider-width-desktop: " . $widthValueDesktop . $widthUnit . ";";
 $styles .= "--fsrg-slider-height-mobile: " . $heightValueMobile . $heightUnit . ";";
 $styles .= "--fsrg-slider-width-mobile: " . $widthValueMobile . $widthUnit . ";";
-$styles .= "--fsrg-slider-pagination-active-color: " . $paginationColorActive . ";";
-$styles .= "--fsrg-slider-pagination-inactive-color: " . $paginationColorInactive . ";";
+$styles .= "--fsrg-slider-active-color: " . $colorActive . ";";
+$styles .= "--fsrg-slider-inactive-color: " . $colorInactive . ";";
+$styles .= "--fsrg-slider-text-color: " . $colorText . ";";
 
 $all_tours = new AllTourDates();
 
@@ -87,19 +89,22 @@ if ($allSliderEntries) {
 			foreach ($allSliderEntries as $entry) {
 				?>
 
-				<div class="swiper-slide fsrg-swiper-slide"
-					style="background-image: url('<?php echo $entry['picture']; ?>'); width: <?php echo ($widthValue); ?><?php echo ($widthUnit); ?>;">
+				<div class="swiper-slide fsrg-swiper-slide" style="background-image: url('<?php echo $entry['picture']; ?>');">
 					<a href="<?php echo $entry['tour_link']; ?>" class="fsrg-slide-link"></a>
 					<div class="fsrg-slide-content">
 
-						<h2><?php echo $entry['title']; ?></h2>
-						<p><?php echo $entry['date']; ?></p>
+						<div class="fsrg-slide-content-title"><a href="<?php echo $entry['tour_link']; ?>"
+								class="fsrg-slide-content-link"><?php echo $entry['title']; ?></a></div>
+						<div class="fsrg-slide-content-date"><a href="<?php echo $entry['tour_link']; ?>"
+								class="fsrg-slide-content-link"><?php echo $entry['date']; ?></a></div>
 						<?php if ($entry['ticket_link']) { ?>
-							<div class="wp-block-buttons fsrg-slider-button">
-								<div class="wp-block-button fsrg-slider-button">
-									<a class="fsrg-slider-button wp-block-button__link wp-element-button"
-										href="<?php echo $entry['ticket_link']; ?>"
-										style="border-radius:0px"><?php echo $buttonText; ?></a>
+							<div class="fsrg-slider-button">
+								<div class="wp-block-buttons">
+									<div class="wp-block-button">
+										<a class="fsrg-slider-button wp-block-button__link wp-element-button"
+											href="<?php echo $entry['ticket_link']; ?>"
+											style="border-radius:0px"><?php echo $buttonText; ?></a>
+									</div>
 								</div>
 							</div>
 						<?php } ?>

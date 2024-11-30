@@ -58,13 +58,17 @@
       "type": "string",
       "default": "85"
     },
-    "paginationColorActive": {
+    "colorActive": {
       "type": "string",
       "default": "#d1d81e"
     },
-    "paginationColorInactive": {
+    "colorInactive": {
       "type": "string",
       "default": "#e0e0e0"
+    },
+    "colorText": {
+      "type": "string",
+      "default": "#f9f9f9"
     }
   }
 }

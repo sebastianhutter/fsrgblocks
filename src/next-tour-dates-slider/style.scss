@@ -5,24 +5,20 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-// fsrg green: D1D81E (used as button background color)
-// fsrq brown: 3C2C29 (used as button text color)
-// fsrg white: F9F9F9 (used as background
-// fsrg grey: E0E0E0 (used in dividers)
 
 .fsrg-swiper {
 	width: 100%;
 	height: var(--fsrg-slider-height-desktop);
 	// same green as for buttons etc
-	--swiper-pagination-color: var(--fsrg-slider-pagination-active-color);
-	--swiper-pagination-bullet-inactive-color: var(--fsrg-slider-pagination-inactive-color);
+	--swiper-pagination-color: var(--fsrg-slider-active-color);
+	--swiper-pagination-bullet-inactive-color: var(--fsrg-slider-inactive-color);
 }
 
 .fsrg-swiper-slide {
 	position: relative;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: top;
 	height: 100%;
 	width: var(--fsrg-slider-width-desktop);
 	background-size: cover;
@@ -30,16 +26,6 @@
 	overflow: hidden;
 }
 
-// on mobile view the height and width need to be different
-@media (max-width: 768px) {
-	.fsrg-swiper {
-		height: var(--fsrg-slider-height-mobile);
-	}
-
-	.fsrg-swiper-slide {
-		width: var(--fsrg-slider-width-mobile);
-	}
-}
 
 .fsrg-swiper-slide::before {
 	content: "";
@@ -57,7 +43,6 @@
 	position: relative;
 	z-index: 4;
 	text-align: center;
-	color: white;
 }
 
 
@@ -71,28 +56,66 @@
 	/* No underlines on the link */
 	text-decoration: none;
 	/* Places the link above everything else in the div */
-	z-index: 3;
+	z-index: 4;
 	/* Fix to make div clickable in IE */
 	background-color: #FFF;
 	/* Fix to make div clickable in IE */
 	opacity: 0;
 	/* Fix to make div clickable in IE */
 	filter: alpha(opacity=1);
-
 }
 
-.fsrg-slide-content h2 {
+.fsrg-slide-content-link {
+	text-decoration: none;
+}
+
+.fsrg-slide-content-title {
 	font-size: 3rem;
-	margin: 0;
+	font-weight: bolder;
+	color: var(--fsrg-slider-text-color) !important;
+	margin: 8rem 0 0.5rem 0;
+	padding: 0;
+	text-shadow: 0 0 1px var(--fsrg-slider-active-color);
 }
 
-.fsrg-slide-content p {
-	font-size: 1.5rem;
+.fsrg-slide-content-date {
+	font-size: 2rem;
+	font-weight: bolder;
+	color: var(--fsrg-slider-text-color);
 }
 
 .fsrg-slider-button {
-	// position: relative;
+	position: relative;
+	top: 15%;
 
 	z-index: 9;
 	pointer-events: auto;
+
+}
+
+
+
+// on mobile view the height and width need to be different
+@media (max-width: 768px) {
+	.fsrg-swiper {
+		height: var(--fsrg-slider-height-mobile);
+	}
+
+	.fsrg-swiper-slide {
+		width: var(--fsrg-slider-width-mobile);
+	}
+
+	.fsrg-slide-content-title {
+		font-size: 2rem;
+		margin: 5rem 0 0.5rem 0;
+	}
+
+	.fsrg-slide-content-date {
+		font-size: 1.8rem;
+	}
+
+	// .fsrg-slider-button {
+	// 	top: 130%;
+	// }
+
 }
