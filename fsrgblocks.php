@@ -28,5 +28,6 @@ function fsrg_fsrgblocks_block_init()
 {
 	register_block_type(__DIR__ . '/build/list-tour-dates-of-season');
 	register_block_type(__DIR__ . '/build/list-all-tour-dates-of-current-year');
+	register_block_type(__DIR__ . '/build/next-tour-dates-slider');
 }
 add_action('init', 'fsrg_fsrgblocks_block_init');

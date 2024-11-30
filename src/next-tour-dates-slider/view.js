@@ -1,7 +1,3 @@
-/******/ (() => { // webpackBootstrap
-/*!*********************************************************!*\
-  !*** ./src/list-all-tour-dates-of-current-year/view.js ***!
-  \*********************************************************/
 /**
  * Use this file for JavaScript code that you want to run in the front-end
  * on posts/pages that contain this block.
@@ -23,6 +19,29 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
  */
-/******/ })()
-;
-//# sourceMappingURL=view.js.map
+
+/* eslint-disable no-console */
+console.log( 'Hello World! (from fsrg-fsrgblocks block)' );
+/* eslint-enable no-console */
+
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'vertical',
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});

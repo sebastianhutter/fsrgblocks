@@ -11,7 +11,10 @@ class TourDateEntry
 	public string $title;
 	public string $description;
 
-	public function __construct($date, $ticket_link = "", string $title = "", string $description = "")
+	public bool $show_in_homepage_carousel;
+	public string $carousel_picture;
+
+	public function __construct($date, $ticket_link = "", string $title = "", string $description = "", bool $show_in_homepage_carousel = true, string $carousel_picture = "")
 	{
 		$this->date = new DateTime($date);
 		$this->ticket_link = $ticket_link;
@@ -19,6 +22,9 @@ class TourDateEntry
 		$this->month = $this->date->format('m');
 		$this->title = $title;
 		$this->description = $description;
+		$this->show_in_homepage_carousel = $show_in_homepage_carousel;
+		$this->carousel_picture = $carousel_picture;
+
 	}
 
 	public function render_timestamp_string(): string
@@ -114,6 +120,8 @@ class TourDates
 				$entry[FSRG_RUNDGANG_TERMIN_TICKET_LINK_FIELD],
 				$entry[FSRG_RUNDGANG_TERMIN_TITEL_FIELD],
 				$entry[FSRG_RUNDGANG_TERMIN_BESCHREIBUNG_FIELD],
+				$entry[FSRG_RUNDGANG_TERMIN_SHOW_ON_HOMEPAGE_FIELD],
+				$entry[FSRG_RUNDGANG_TERMIN_HOMEPAGE_PICTURE_FIELD],
 			);
 		}
 		return $tour_dates;
