@@ -32,33 +32,78 @@ import './editor.scss';
 
 import { SelectControl, TextControl } from '@wordpress/components';
 
-export default function Edit({attributes, setAttributes}) {
+export default function Edit({ attributes, setAttributes }) {
 
-
-	// allow selection of the next 20 years for the tour date
-
-	const blockYear = attributes.seasonYear ? attributes.seasonYear : new Date().getFullYear();
-	const years = Array.from({length: 20}, (v, k) => new Date().getFullYear() + k);
+	console.log(attributes.tourCount);
 
 	return (
-		<div { ...useBlockProps() }>
+		<div {...useBlockProps()}>
 			<TextControl
-				label={ __( 'Überschrift', 'fsrgblocks' ) }
-				value={ attributes.header }
-				onChange={ ( value ) => setAttributes({ header: value })}
+				label={__('Button Text', 'fsrgblocks')}
+				value={attributes.buttonText}
+				onChange={(value) => setAttributes({ buttonText: value })}
 			/>
 			<TextControl
-				label={ __( 'Button Text', 'fsrgblocks' ) }
-				value={ attributes.buttonText }
-				onChange={ ( value ) => setAttributes({ buttonText: value })}
-			/>
-			<TextControl
-				label={ __( 'Anzahl Rundgänge im Karousel', 'fsrgblocks' ) }
-				value={ attributes.tourCount }
+				label={__('Anzahl Rundgänge im Karousel', 'fsrgblocks')}
+				value={attributes.tourCount}
 				type="number"
-				onChange={ ( value ) => setAttributes({ tourCount: value })}
+				onChange={(value) => setAttributes({ tourCount: value })}
+			/>
+			<SelectControl
+				label={__('Hoehen Einheit', 'fsrgblocks')}
+				value={attributes.heightUnit}
+				options={[
+					{ label: 'px', value: 'px' },
+					{ label: 'vh', value: 'vh' },
+				]}
+				onChange={(value) => setAttributes({ heightUnit: value })}
+			/>
+			<SelectControl
+				label={__('Breite Einheit', 'fsrgblocks')}
+				value={attributes.widthUnit}
+				options={[
+					{ label: '%', value: '%' },
+					{ label: 'px', value: 'px' },
+					{ label: 'vw', value: 'vw' },
+				]}
+				onChange={(value) => setAttributes({ widthUnit: value })}
+			/>
+			<TextControl
+				label={__('Hoehe des Karousels auf Desktop', 'fsrgblocks')}
+				value={attributes.heightValueDesktop}
+				type="number"
+				onChange={(value) => setAttributes({ heightValueDesktop: value })}
+			/>
+			<TextControl
+				label={__('Breite eines Sliders im Karousel auf Desktop', 'fsrgblocks')}
+				value={attributes.widthValueDesktop}
+				type="number"
+				onChange={(value) => setAttributes({ widthValueDesktop: value })}
+			/>
+			<TextControl
+				label={__('Hoehe des Karousels auf Mobile', 'fsrgblocks')}
+				value={attributes.heightValueMobile}
+				type="number"
+				onChange={(value) => setAttributes({ heightValueMobile: value })}
+			/>
+			<TextControl
+				label={__('Breite eines Sliders im Karousel auf Mobile', 'fsrgblocks')}
+				value={attributes.widthValueMobile}
+				type="number"
+				onChange={(value) => setAttributes({ widthValueMobile: value })}
+			/>
+			<TextControl
+				label={__('Farbe fuer den aktiven Paginator (punkt)', 'fsrgblocks')}
+				value={attributes.paginationColorActive}
+				onChange={(value) => setAttributes({ paginationColorActive: value })}
+			/>
+			<TextControl
+				label={__('Farbe fuer den inaktiven Paginator (punkt)', 'fsrgblocks')}
+				value={attributes.paginationColorInactive}
+				onChange={(value) => setAttributes({ paginationColorInactive: value })}
 			/>
 
+			<i>Zeige die naechsten {attributes.tourCount} Rundgaegnge im Karousel</i>
 		</div>
 	);
 }

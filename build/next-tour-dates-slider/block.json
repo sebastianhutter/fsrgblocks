@@ -18,17 +18,53 @@
   "render": "file:./render.php",
   "viewScript": "file:./view.js",
   "attributes": {
-    "header": {
-      "type": "string",
-      "default": "Unsere nächsten Rundgänge"
-    },
     "buttonText": {
       "type": "string",
       "default": "Tickets"
     },
     "tourCount": {
-      "type": "integer",
-      "default": 5
+      "type": "string"
+    },
+    "heightUnit": {
+      "type": "string",
+      "default": "px",
+      "enum": [
+        "px",
+        "vh"
+      ]
+    },
+    "widthUnit": {
+      "type": "string",
+      "default": "%",
+      "enum": [
+        "px",
+        "vw",
+        "%"
+      ]
+    },
+    "heightValueDesktop": {
+      "type": "string",
+      "default": "25"
+    },
+    "widthValueDesktop": {
+      "type": "string",
+      "default": "85"
+    },
+    "heightValueMobile": {
+      "type": "string",
+      "default": "25"
+    },
+    "widthValueMobile": {
+      "type": "string",
+      "default": "85"
+    },
+    "paginationColorActive": {
+      "type": "string",
+      "default": "#d1d81e"
+    },
+    "paginationColorInactive": {
+      "type": "string",
+      "default": "#e0e0e0"
     }
   }
 }

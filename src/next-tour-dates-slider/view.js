@@ -42,16 +42,6 @@ const swiper = new Swiper('.swiper', {
 		clickable: true,
 	},
 
-	mousewheel: true,
-	keyboard: true,
-	// // Navigation arrows
-	// navigation: {
-	//   nextEl: '.swiper-button-next',
-	//   prevEl: '.swiper-button-prev',
-	// },
-
-	// // And if we need scrollbar
-	// scrollbar: {
-	//   el: '.swiper-scrollbar',
-	// },
+	mousewheel: false,
+	keyboard: false,
 });

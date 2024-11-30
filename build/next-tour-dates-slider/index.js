@@ -59,21 +59,10 @@ function Edit({
   attributes,
   setAttributes
 }) {
-  // allow selection of the next 20 years for the tour date
-
-  const blockYear = attributes.seasonYear ? attributes.seasonYear : new Date().getFullYear();
-  const years = Array.from({
-    length: 20
-  }, (v, k) => new Date().getFullYear() + k);
+  console.log(attributes.tourCount);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Überschrift', 'fsrgblocks'),
-      value: attributes.header,
-      onChange: value => setAttributes({
-        header: value
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Button Text', 'fsrgblocks'),
       value: attributes.buttonText,
       onChange: value => setAttributes({
@@ -86,6 +75,77 @@ function Edit({
       onChange: value => setAttributes({
         tourCount: value
       })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehen Einheit', 'fsrgblocks'),
+      value: attributes.heightUnit,
+      options: [{
+        label: 'px',
+        value: 'px'
+      }, {
+        label: 'vh',
+        value: 'vh'
+      }],
+      onChange: value => setAttributes({
+        heightUnit: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite Einheit', 'fsrgblocks'),
+      value: attributes.widthUnit,
+      options: [{
+        label: '%',
+        value: '%'
+      }, {
+        label: 'px',
+        value: 'px'
+      }, {
+        label: 'vw',
+        value: 'vw'
+      }],
+      onChange: value => setAttributes({
+        widthUnit: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehe des Karousels auf Desktop', 'fsrgblocks'),
+      value: attributes.heightValueDesktop,
+      type: "number",
+      onChange: value => setAttributes({
+        heightValueDesktop: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite eines Sliders im Karousel auf Desktop', 'fsrgblocks'),
+      value: attributes.widthValueDesktop,
+      type: "number",
+      onChange: value => setAttributes({
+        widthValueDesktop: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehe des Karousels auf Mobile', 'fsrgblocks'),
+      value: attributes.heightValueMobile,
+      type: "number",
+      onChange: value => setAttributes({
+        heightValueMobile: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite eines Sliders im Karousel auf Mobile', 'fsrgblocks'),
+      value: attributes.widthValueMobile,
+      type: "number",
+      onChange: value => setAttributes({
+        widthValueMobile: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den aktiven Paginator (punkt)', 'fsrgblocks'),
+      value: attributes.paginationColorActive,
+      onChange: value => setAttributes({
+        paginationColorActive: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den inaktiven Paginator (punkt)', 'fsrgblocks'),
+      value: attributes.paginationColorInactive,
+      onChange: value => setAttributes({
+        paginationColorInactive: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("i", {
+      children: ["Zeige die naechsten ", attributes.tourCount, " Rundgaegnge im Karousel"]
     })]
   });
 }
@@ -220,7 +280,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"fsrg/next-tour-dates-slider","version":"0.1.0","title":"Zeige ein Karoussel mit den nächsten Rundgängen","category":"widgets","icon":"smiley","description":"Zeige ein Karoussel mit den nächsten Rundgängen","example":{},"supports":{"html":false},"textdomain":"fsrgblocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"header":{"type":"string","default":"Unsere nächsten Rundgänge"},"buttonText":{"type":"string","default":"Tickets"},"tourCount":{"type":"integer","default":5}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"fsrg/next-tour-dates-slider","version":"0.1.0","title":"Zeige ein Karoussel mit den nächsten Rundgängen","category":"widgets","icon":"smiley","description":"Zeige ein Karoussel mit den nächsten Rundgängen","example":{},"supports":{"html":false},"textdomain":"fsrgblocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"buttonText":{"type":"string","default":"Tickets"},"tourCount":{"type":"string"},"heightUnit":{"type":"string","default":"px","enum":["px","vh"]},"widthUnit":{"type":"string","default":"%","enum":["px","vw","%"]},"heightValueDesktop":{"type":"string","default":"25"},"widthValueDesktop":{"type":"string","default":"85"},"heightValueMobile":{"type":"string","default":"25"},"widthValueMobile":{"type":"string","default":"85"},"paginationColorActive":{"type":"string","default":"#d1d81e"},"paginationColorInactive":{"type":"string","default":"#e0e0e0"}}}');
 
 /***/ })
 
