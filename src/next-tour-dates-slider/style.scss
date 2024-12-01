@@ -50,30 +50,22 @@
 	z-index: 4;
 	text-align: center;
 
-	// width: 100%;
-	// padding: 0;
+	width: 100%;
+	padding: 0;
 	margin: 2rem 0 0.5rem 0;
 }
 
-// .fsrg-slide-content-blur {
-// 	// create a blurred background behind the text content
-// 	// to make it easier to read
+.fsrg-slide-content-blur {
+	// create a blurred background behind the text content
+	// to make it easier to read
 
-// 	// position: relative;
-// 	// z-index: 2;
-// 	// text-align: center;
-// 	// color: white;
-// 	padding: 10px 20px;
-// 	border-radius: 5px;
-// 	/* Optional */
-// 	background: rgba(0, 0, 0, 0.3);
-// 	/* Fallback for older browsers */
-// 	// backdrop-filter: blur(10px);
-// 	// // /* Creates the blur effect */
-// 	display: inline-block;
-// 	/* Ensure proper sizing */
-// 	margin: auto;
-// }
+	width: 100%;
+	border-radius: 5px;
+	background: var(--fsrg-slider-background-color);
+	display: inline-block;
+	margin: auto;
+	padding: 10px 0 10px 0;
+}
 
 
 
@@ -99,13 +91,13 @@
 .fsrg-slide-content-title {
 	font-size: 3rem !important;
 	color: var(--fsrg-slider-text-color) !important;
-	text-shadow: 0 0 2px var(--fsrg-slider-active-color);
+	text-shadow: 1px 0px 1px var(--fsrg-slider-active-color);
 }
 
 .fsrg-slide-content-date {
 	font-size: 2rem !important;
-	// margin: 2rem 0 0.5rem 0;
-	color: var(--fsrg-slider-text-color);
+	color: var(--fsrg-slider-text-color) !important;
+	text-shadow: 1px 0px 1px var(--fsrg-slider-active-color);
 }
 
 .fsrg-slider-button {
@@ -138,13 +130,6 @@
 	}
 
 	.fsrg-slide-content-date {
-		font-size: 1.5rem !important;
+		font-size: 1.8rem !important;
 	}
-
-	// .fsrg-slide-content-blur {
-	// 	width: 100%;
-	// 	max-width: none;
-	// 	margin: none;
-	// 	/* Remove any restrictions */
-	// }
 }

@@ -73,6 +73,10 @@
     "colorText": {
       "type": "string",
       "default": "#f9f9f9"
+    },
+    "colorBackground": {
+      "type": "string",
+      "default": "rgba(60, 44, 41, 0.3)"
     }
   }
 }

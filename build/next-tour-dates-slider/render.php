@@ -37,6 +37,7 @@ $widthValueMobile = $attributes['widthValueMobile'];
 $colorActive = $attributes['colorActive'];
 $colorInactive = $attributes['colorInactive'];
 $colorText = $attributes['colorText'];
+$colorBackground = $attributes['colorBackground'];
 
 
 // add styles for scss
@@ -48,6 +49,7 @@ $styles .= "--fsrg-slider-width-mobile: " . $widthValueMobile . $widthUnit . ";"
 $styles .= "--fsrg-slider-active-color: " . $colorActive . ";";
 $styles .= "--fsrg-slider-inactive-color: " . $colorInactive . ";";
 $styles .= "--fsrg-slider-text-color: " . $colorText . ";";
+$styles .= "--fsrg-slider-background-color: " . $colorBackground . ";";
 
 $all_tours = new AllTourDates();
 
@@ -100,7 +102,7 @@ if ($allSliderEntries) {
 				?>
 				<div class="swiper-slide fsrg-swiper-slide"
 					style="background-image: url('<?php echo $entry['picture']; ?>'); background-position: <?php echo $entry['picture_position']; ?>;">
-					<?php // ensure the slide background is clickable ?> ?>
+					<?php // ensure the slide background is clickable ?>
 					<a href="<?php echo $entry['tour_link']; ?>" class="fsrg-slide-block-link"></a>
 					<div class="fsrg-slide-content">
 						<?php // ensure the slide text is clickable ?>

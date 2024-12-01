@@ -113,7 +113,11 @@ export default function Edit({ attributes, setAttributes }) {
 				value={attributes.colorText}
 				onChange={(value) => setAttributes({ colorText: value })}
 			/>
-
+			<TextControl
+				label={__('Farbe fuer den Text-Hintergrund in den Slides', 'fsrgblocks')}
+				value={attributes.colorBackground}
+				onChange={(value) => setAttributes({ colorBackground: value })}
+			/>
 			<i>Zeige die naechsten {attributes.tourCount} Rundgaegnge im Karousel</i>
 		</div>
 	);
