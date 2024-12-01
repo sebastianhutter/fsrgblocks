@@ -55,14 +55,16 @@ foreach ($all_tours->get_tours() as $tour) {
 			continue;
 		}
 		$allSliderEntries[] = array(
-			"_date_for_sorting" => $tourdate->date,
-			"date" => render_timestamp_string($tourdate->date),
+			"_date_for_sorting" => $tourdate->get_date(),
+			"date" => render_timestamp_string($tourdate->get_date()),
 			"tour_link" => $tour->get_perma_link(),
 			"ticket_link" => $tourdate->get_ticket_link(),
 			// if the date has a custom title use it, else use the default title
 			"title" => $tourdate->get_title() ? $tourdate->get_title() : $tour->get_title(),
 			// if the tour date has a picture, use it, otherwise use the default picture
 			"picture" => $tourdate->get_carousel_picture() ? $tourdate->get_carousel_picture() : $tour->get_carousel_picture(),
+			// get the picture position for the tour date, if not set use the default position
+			"picture_position" => $tourdate->get_carousel_picture_position() ? $tourdate->get_carousel_picture_position() : $tour->get_carousel_picture_position(),
 		);
 	}
 
@@ -88,8 +90,8 @@ if ($allSliderEntries) {
 			<?php
 			foreach ($allSliderEntries as $entry) {
 				?>
-
-				<div class="swiper-slide fsrg-swiper-slide" style="background-image: url('<?php echo $entry['picture']; ?>');">
+				<div class="swiper-slide fsrg-swiper-slide"
+					style="background-image: url('<?php echo $entry['picture']; ?>'); background-position: <?php echo $entry['picture_position']; ?>;">
 					<a href="<?php echo $entry['tour_link']; ?>" class="fsrg-slide-link"></a>
 					<div class="fsrg-slide-content">
 

@@ -38,8 +38,8 @@ foreach ($months as $key => $value) {
 	foreach ($all_tours->get_tours() as $tour) {
 		foreach ($tour->return_tour_dates_for_year_and_month($seasonYear, $key) as $date) {
 			$dates_for_month[] = array(
-				"_date_for_sorting" => $date->date,
-				"date" => render_timestamp_string($date->date),
+				"_date_for_sorting" => $date->get_date(),
+				"date" => render_timestamp_string($date->get_date()),
 				"ticket_link_text" => $date->get_title() ? $date->get_title() : $tour->get_title(),
 				"ticket_link_description" => $date->get_description() ? $date->get_description() : null,
 				"ticket_link" => $date->get_ticket_link(),
