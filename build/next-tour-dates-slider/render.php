@@ -5,6 +5,14 @@
 ?>
 
 <?php
+// pass along the autplay delay to the js script
+$autoPlayDelayInMs = (int) $attributes['autoPlayDelayInMs'];
+wp_register_script('Swiper-Delay', '');
+wp_enqueue_script('Swiper-Delay');
+wp_add_inline_script('Swiper-Delay', "const autoPlayDelayInMs = $autoPlayDelayInMs;");
+?>
+
+<?php
 // load the swipper js script for the next-tour-dates-slider block
 wp_enqueue_style('Swiper', 'https://cdn.jsdelivr.net/npm/swiper@11.1.15/swiper-bundle.min.css');
 wp_enqueue_script('Swiper', 'https://cdn.jsdelivr.net/npm/swiper@11.1.15/swiper-bundle.min.js');

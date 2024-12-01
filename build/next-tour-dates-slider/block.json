@@ -58,6 +58,10 @@
       "type": "string",
       "default": "85"
     },
+    "autoPlayDelayInMs": {
+      "type": "string",
+      "default": "4000"
+    },
     "colorActive": {
       "type": "string",
       "default": "#d1d81e"

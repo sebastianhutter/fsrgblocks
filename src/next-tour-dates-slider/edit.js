@@ -93,6 +93,12 @@ export default function Edit({ attributes, setAttributes }) {
 				onChange={(value) => setAttributes({ widthValueMobile: value })}
 			/>
 			<TextControl
+				label={__('Zeit zwischen Slide Wechsel in Karousel, in Millisekunden. Setze auf 0 um autoplay zu deaktivieren', 'fsrgblocks')}
+				value={attributes.autoPlayDelayInMs}
+				type="number"
+				onChange={(value) => setAttributes({ autoPlayDelayInMs: value })}
+			/>
+			<TextControl
 				label={__('Farbe fuer aktiven Paginator und Textrand', 'fsrgblocks')}
 				value={attributes.colorActive}
 				onChange={(value) => setAttributes({ colorActive: value })}

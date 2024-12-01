@@ -133,6 +133,13 @@ function Edit({
         widthValueMobile: value
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Zeit zwischen Slide Wechsel in Karousel, in Millisekunden. Setze auf 0 um autoplay zu deaktivieren', 'fsrgblocks'),
+      value: attributes.autoPlayDelayInMs,
+      type: "number",
+      onChange: value => setAttributes({
+        autoPlayDelayInMs: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer aktiven Paginator und Textrand', 'fsrgblocks'),
       value: attributes.colorActive,
       onChange: value => setAttributes({
@@ -286,7 +293,7 @@ module.exports = window["wp"]["i18n"];
   \***********************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"fsrg/next-tour-dates-slider","version":"0.1.0","title":"Zeige ein Karoussel mit den nächsten Rundgängen","category":"widgets","icon":"smiley","description":"Zeige ein Karoussel mit den nächsten Rundgängen","example":{},"supports":{"html":false},"textdomain":"fsrgblocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"buttonText":{"type":"string","default":"Tickets"},"tourCount":{"type":"string"},"heightUnit":{"type":"string","default":"px","enum":["px","vh"]},"widthUnit":{"type":"string","default":"%","enum":["px","vw","%"]},"heightValueDesktop":{"type":"string","default":"25"},"widthValueDesktop":{"type":"string","default":"85"},"heightValueMobile":{"type":"string","default":"25"},"widthValueMobile":{"type":"string","default":"85"},"colorActive":{"type":"string","default":"#d1d81e"},"colorInactive":{"type":"string","default":"#e0e0e0"},"colorText":{"type":"string","default":"#f9f9f9"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"fsrg/next-tour-dates-slider","version":"0.1.0","title":"Zeige ein Karoussel mit den nächsten Rundgängen","category":"widgets","icon":"smiley","description":"Zeige ein Karoussel mit den nächsten Rundgängen","example":{},"supports":{"html":false},"textdomain":"fsrgblocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js","attributes":{"buttonText":{"type":"string","default":"Tickets"},"tourCount":{"type":"string"},"heightUnit":{"type":"string","default":"px","enum":["px","vh"]},"widthUnit":{"type":"string","default":"%","enum":["px","vw","%"]},"heightValueDesktop":{"type":"string","default":"25"},"widthValueDesktop":{"type":"string","default":"85"},"heightValueMobile":{"type":"string","default":"25"},"widthValueMobile":{"type":"string","default":"85"},"autoPlayDelayInMs":{"type":"string","default":"4000"},"colorActive":{"type":"string","default":"#d1d81e"},"colorInactive":{"type":"string","default":"#e0e0e0"},"colorText":{"type":"string","default":"#f9f9f9"}}}');
 
 /***/ })
 
