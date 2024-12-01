@@ -9,7 +9,7 @@ function sort_by_date(array $tour_dates): array
 	}
 
 	usort($tour_dates, function ($a, $b) {
-		return $a->date <=> $b->date;
+		return $a->get_date() <=> $b->get_date();
 	});
 	return $tour_dates;
 }
@@ -55,16 +55,17 @@ function render_timestamp_string(DateTime $date): string
 // tour date entry for a specific event
 class TourDateEntry
 {
-	public DateTime $date;
-	public string $year;
-	public string $month;
-	public string $ticket_link;
+	private DateTime $date;
+	private string $year;
+	private string $month;
+	private string $ticket_link;
 
-	public string $title;
-	public string $description;
+	private string $title;
+	private string $description;
 
-	public bool $show_in_homepage_carousel;
-	public string $carousel_picture;
+	private bool $show_in_homepage_carousel;
+	private string $carousel_picture;
+
 
 	public function __construct($date, $ticket_link = "", string $title = "", string $description = "", bool $show_in_homepage_carousel = true, string $carousel_picture = "")
 	{
@@ -115,6 +116,21 @@ class TourDateEntry
 			return null;
 		}
 		return $this->title;
+	}
+
+	public function get_year(): string
+	{
+		return $this->year;
+	}
+
+	public function get_month(): string
+	{
+		return $this->month;
+	}
+
+	public function get_date(): DateTime
+	{
+		return $this->date;
 	}
 }
 
@@ -172,7 +188,7 @@ class TourDates
 	public function has_tour_dates_for_year(string $year): bool
 	{
 		foreach ($this->tour_dates as $tour_date) {
-			if ($tour_date->year === $year) {
+			if ($tour_date->get_year() === $year) {
 				return true;
 			}
 		}
@@ -184,7 +200,7 @@ class TourDates
 	{
 		$dates = [];
 		foreach ($this->tour_dates as $tour_date) {
-			if ($tour_date->year === $year) {
+			if ($tour_date->get_year() === $year) {
 				$dates[] = $tour_date;
 			}
 		}
@@ -196,14 +212,14 @@ class TourDates
 	{
 		$dates = [];
 		foreach ($this->tour_dates as $tour_date) {
-			if ($tour_date->year === $year && $tour_date->month === $month) {
+			if ($tour_date->get_year() === $year && $tour_date->get_month() === $month) {
 				$dates[] = $tour_date;
 			}
 		}
 
 		// sort the dates by date
 		usort($dates, function ($a, $b) {
-			return $a->date <=> $b->date;
+			return $a->get_date() <=> $b->get_date();
 		});
 
 		return sort_by_date($dates);
@@ -227,7 +243,7 @@ class TourDates
 
 		$dates = [];
 		foreach ($this->tour_dates as $tour_date) {
-			if ($tour_date->date >= $today) {
+			if ($tour_date->get_date() >= $today) {
 				$dates[] = $tour_date;
 			}
 		}

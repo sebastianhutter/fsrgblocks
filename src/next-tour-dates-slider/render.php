@@ -55,8 +55,8 @@ foreach ($all_tours->get_tours() as $tour) {
 			continue;
 		}
 		$allSliderEntries[] = array(
-			"_date_for_sorting" => $tourdate->date,
-			"date" => render_timestamp_string($tourdate->date),
+			"_date_for_sorting" => $tourdate->get_date(),
+			"date" => render_timestamp_string($tourdate->get_date()),
 			"tour_link" => $tour->get_perma_link(),
 			"ticket_link" => $tourdate->get_ticket_link(),
 			// if the date has a custom title use it, else use the default title
