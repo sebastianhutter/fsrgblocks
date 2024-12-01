@@ -78,75 +78,14 @@ function Edit({
   console.log(attributes.tourCount);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Button Text', 'fsrgblocks'),
-      value: attributes.buttonText,
-      onChange: value => setAttributes({
-        buttonText: value
-      })
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Allgemeine Konfiguration', 'fsrgblocks')
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Anzahl Rundgänge im Karousel', 'fsrgblocks'),
       value: attributes.tourCount,
       type: "number",
       onChange: value => setAttributes({
         tourCount: value
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehen Einheit', 'fsrgblocks'),
-      value: attributes.heightUnit,
-      options: [{
-        label: 'px',
-        value: 'px'
-      }, {
-        label: 'vh',
-        value: 'vh'
-      }],
-      onChange: value => setAttributes({
-        heightUnit: value
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite Einheit', 'fsrgblocks'),
-      value: attributes.widthUnit,
-      options: [{
-        label: '%',
-        value: '%'
-      }, {
-        label: 'px',
-        value: 'px'
-      }, {
-        label: 'vw',
-        value: 'vw'
-      }],
-      onChange: value => setAttributes({
-        widthUnit: value
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehe des Karousels auf Desktop', 'fsrgblocks'),
-      value: attributes.heightValueDesktop,
-      type: "number",
-      onChange: value => setAttributes({
-        heightValueDesktop: value
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite eines Sliders im Karousel auf Desktop', 'fsrgblocks'),
-      value: attributes.widthValueDesktop,
-      type: "number",
-      onChange: value => setAttributes({
-        widthValueDesktop: value
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehe des Karousels auf Mobile', 'fsrgblocks'),
-      value: attributes.heightValueMobile,
-      type: "number",
-      onChange: value => setAttributes({
-        heightValueMobile: value
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite eines Sliders im Karousel auf Mobile', 'fsrgblocks'),
-      value: attributes.widthValueMobile,
-      type: "number",
-      onChange: value => setAttributes({
-        widthValueMobile: value
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Zeit zwischen Slide Wechsel in Karousel, in Millisekunden. Setze auf 0 um autoplay zu deaktivieren', 'fsrgblocks'),
@@ -155,46 +94,197 @@ function Edit({
       onChange: value => setAttributes({
         autoPlayDelayInMs: value
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer aktiven Paginator und Textrand', 'fsrgblocks'),
-      value: attributes.colorActive,
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Button Text', 'fsrgblocks'),
+      value: attributes.buttonText,
       onChange: value => setAttributes({
-        colorActive: value
-      }),
-      enableAlpha: true,
-      colors: defaultColors
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den inaktiven Paginator (punkt)', 'fsrgblocks'),
-      value: attributes.colorInactive,
-      onChange: value => setAttributes({
-        colorInactive: value
-      }),
-      enableAlpha: true,
-      colors: defaultColors
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den Text in den Slides', 'fsrgblocks'),
-      value: attributes.colorText,
-      onChange: value => setAttributes({
-        colorText: value
-      }),
-      enableAlpha: true,
-      colors: defaultColors
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den Text-Schatten in den Slides', 'fsrgblocks'),
-      value: attributes.colorTextShadow,
-      onChange: value => setAttributes({
-        colorTextShadow: value
-      }),
-      enableAlpha: true,
-      colors: defaultColors
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den Text-Hintergrund in den Slides', 'fsrgblocks'),
-      value: attributes.colorBackground,
-      onChange: value => setAttributes({
-        colorBackground: value
-      }),
-      enableAlpha: true,
-      colors: defaultColors
+        buttonText: value
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehe und Breite des Karousels', 'fsrgblocks')
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Flex, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehen Einheit', 'fsrgblocks'),
+          value: attributes.heightUnit,
+          options: [{
+            label: 'px',
+            value: 'px'
+          }, {
+            label: 'vh',
+            value: 'vh'
+          }],
+          onChange: value => setAttributes({
+            heightUnit: value
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite Einheit', 'fsrgblocks'),
+          value: attributes.widthUnit,
+          options: [{
+            label: '%',
+            value: '%'
+          }, {
+            label: 'px',
+            value: 'px'
+          }, {
+            label: 'vw',
+            value: 'vw'
+          }],
+          onChange: value => setAttributes({
+            widthUnit: value
+          })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Flex, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehe des Karousels auf Desktop', 'fsrgblocks'),
+          value: attributes.heightValueDesktop,
+          type: "number",
+          onChange: value => setAttributes({
+            heightValueDesktop: value
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite eines Sliders im Karousel auf Desktop', 'fsrgblocks'),
+          value: attributes.widthValueDesktop,
+          type: "number",
+          onChange: value => setAttributes({
+            widthValueDesktop: value
+          })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Flex, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hoehe des Karousels auf Mobile', 'fsrgblocks'),
+          value: attributes.heightValueMobile,
+          type: "number",
+          onChange: value => setAttributes({
+            heightValueMobile: value
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Breite eines Sliders im Karousel auf Mobile', 'fsrgblocks'),
+          value: attributes.widthValueMobile,
+          type: "number",
+          onChange: value => setAttributes({
+            widthValueMobile: value
+          })
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h4", {
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farben', 'fsrgblocks')
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Flex, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          class: "fsrg-color-hint",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer aktiven Paginator (punkt am unteren rand des karousels)', 'fsrgblocks')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+          value: attributes.colorActive,
+          onChange: value => setAttributes({
+            colorActive: value
+          }),
+          enableAlpha: true,
+          colors: defaultColors
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          class: "fsrg-color-hint",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer inaktiven Paginator (punkt am unteren rand des karousels)', 'fsrgblocks')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+          value: attributes.colorInactive,
+          onChange: value => setAttributes({
+            colorInactive: value
+          }),
+          enableAlpha: true,
+          colors: defaultColors
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Flex, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          class: "fsrg-color-hint",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den Text in den Slides', 'fsrgblocks')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+          value: attributes.colorText,
+          onChange: value => setAttributes({
+            colorText: value
+          }),
+          enableAlpha: true,
+          colors: defaultColors
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          class: "fsrg-color-hint",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den Text-Schatten in den Slides', 'fsrgblocks')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+          value: attributes.colorTextShadow,
+          onChange: value => setAttributes({
+            colorTextShadow: value
+          }),
+          enableAlpha: true,
+          colors: defaultColors
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Flex, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          class: "fsrg-color-hint",
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Farbe fuer den Text-Hintergrund in den Slides', 'fsrgblocks')
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+          value: attributes.colorBackground,
+          onChange: value => setAttributes({
+            colorBackground: value
+          }),
+          enableAlpha: true,
+          colors: defaultColors
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.FlexItem, {
+        style: {
+          flexBasis: '50%'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+          class: "fsrg-color-hint"
+        })
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("i", {
       children: ["Zeige die naechsten ", attributes.tourCount, " Rundgaegnge im Karousel"]
     })]
