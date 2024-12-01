@@ -31,9 +31,11 @@ const swiper = new Swiper('.swiper', {
   slidesPerView: "auto",
   centeredSlides: true,
   spaceBetween: 10,
-  autoplay: {
-    delay: 5000
-  },
+  // TODO: enable after css testing is done.
+  // autoplay: {
+  // 	delay: 5000,
+  // },
+
   // If we need pagination
   pagination: {
     el: ".swiper-pagination",
