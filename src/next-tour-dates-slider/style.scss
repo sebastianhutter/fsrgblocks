@@ -65,8 +65,10 @@
 	display: inline-block;
 	margin: auto;
 	padding: 10px 0 10px 0;
-}
 
+	// ensure no roundered borders
+	border-radius: 0;
+}
 
 
 .fsrg-slide-block-link {
@@ -116,6 +118,13 @@
 }
 
 // on mobile view the height and width need to be different
+@media (min-width: 768px) {
+	.fsrg-swiper {
+		// ensure the slider is readable on smaller screens too! (e.g. fullhd televisions etc)
+		min-height: 285px;
+	}
+}
+
 @media (max-width: 768px) {
 	.fsrg-swiper {
 		height: var(--fsrg-slider-height-mobile);

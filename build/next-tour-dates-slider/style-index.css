@@ -51,6 +51,7 @@
   display: inline-block;
   margin: auto;
   padding: 10px 0 10px 0;
+  border-radius: 0;
 }
 
 .fsrg-slide-block-link {
@@ -95,6 +96,11 @@
   /* Ensure it appears above other elements */
 }
 
+@media (min-width: 768px) {
+  .fsrg-swiper {
+    min-height: 285px;
+  }
+}
 @media (max-width: 768px) {
   .fsrg-swiper {
     height: var(--fsrg-slider-height-mobile);
