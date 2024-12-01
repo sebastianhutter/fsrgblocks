@@ -37,6 +37,7 @@ $widthValueMobile = $attributes['widthValueMobile'];
 $colorActive = $attributes['colorActive'];
 $colorInactive = $attributes['colorInactive'];
 $colorText = $attributes['colorText'];
+$colorTextShadow = $attributes['colorTextShadow'];
 $colorBackground = $attributes['colorBackground'];
 
 
@@ -49,6 +50,7 @@ $styles .= "--fsrg-slider-width-mobile: " . $widthValueMobile . $widthUnit . ";"
 $styles .= "--fsrg-slider-active-color: " . $colorActive . ";";
 $styles .= "--fsrg-slider-inactive-color: " . $colorInactive . ";";
 $styles .= "--fsrg-slider-text-color: " . $colorText . ";";
+$styles .= "--fsrg-slider-text-shadow-color: " . $colorTextShadow . ";";
 $styles .= "--fsrg-slider-background-color: " . $colorBackground . ";";
 
 $all_tours = new AllTourDates();

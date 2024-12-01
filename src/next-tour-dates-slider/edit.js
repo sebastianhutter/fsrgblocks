@@ -30,7 +30,16 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 
-import { SelectControl, TextControl } from '@wordpress/components';
+import { SelectControl, TextControl, ColorPalette } from '@wordpress/components';
+
+
+const defaultColors = [
+	{ name: 'Grün', color: '#d1d81e' },
+	{ name: 'Braun ohne Transparenz', color: '#3c2c29' },
+	{ name: 'Braun mit Transparenz', color: '#3c2c294d' },
+	{ name: 'Weiss', color: '#f9f9f9' },
+	{ name: 'Grau', color: '#e0e0e0' },
+];
 
 export default function Edit({ attributes, setAttributes }) {
 
@@ -98,25 +107,40 @@ export default function Edit({ attributes, setAttributes }) {
 				type="number"
 				onChange={(value) => setAttributes({ autoPlayDelayInMs: value })}
 			/>
-			<TextControl
+			<ColorPalette
 				label={__('Farbe fuer aktiven Paginator und Textrand', 'fsrgblocks')}
 				value={attributes.colorActive}
 				onChange={(value) => setAttributes({ colorActive: value })}
+				enableAlpha={true}
+				colors={defaultColors}
 			/>
-			<TextControl
+			<ColorPalette
 				label={__('Farbe fuer den inaktiven Paginator (punkt)', 'fsrgblocks')}
 				value={attributes.colorInactive}
 				onChange={(value) => setAttributes({ colorInactive: value })}
+				enableAlpha={true}
+				colors={defaultColors}
 			/>
-			<TextControl
+			<ColorPalette
 				label={__('Farbe fuer den Text in den Slides', 'fsrgblocks')}
 				value={attributes.colorText}
 				onChange={(value) => setAttributes({ colorText: value })}
+				enableAlpha={true}
+				colors={defaultColors}
 			/>
-			<TextControl
+			<ColorPalette
+				label={__('Farbe fuer den Text-Schatten in den Slides', 'fsrgblocks')}
+				value={attributes.colorTextShadow}
+				onChange={(value) => setAttributes({ colorTextShadow: value })}
+				enableAlpha={true}
+				colors={defaultColors}
+			/>
+			<ColorPalette
 				label={__('Farbe fuer den Text-Hintergrund in den Slides', 'fsrgblocks')}
 				value={attributes.colorBackground}
 				onChange={(value) => setAttributes({ colorBackground: value })}
+				enableAlpha={true}
+				colors={defaultColors}
 			/>
 			<i>Zeige die naechsten {attributes.tourCount} Rundgaegnge im Karousel</i>
 		</div>

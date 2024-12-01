@@ -74,9 +74,13 @@
       "type": "string",
       "default": "#f9f9f9"
     },
+    "colorTextShadow": {
+      "type": "string",
+      "default": "#e0e0e0"
+    },
     "colorBackground": {
       "type": "string",
-      "default": "rgba(60, 44, 41, 0.3)"
+      "default": "#3c2c294d"
     }
   }
 }
