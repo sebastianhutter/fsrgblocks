@@ -92,25 +92,27 @@ if ($allSliderEntries) {
 				?>
 				<div class="swiper-slide fsrg-swiper-slide"
 					style="background-image: url('<?php echo $entry['picture']; ?>'); background-position: <?php echo $entry['picture_position']; ?>;">
-					<a href="<?php echo $entry['tour_link']; ?>" class="fsrg-slide-link"></a>
+					<?php // ensure the slide background is clickable ?> ?>
+					<a href="<?php echo $entry['tour_link']; ?>" class="fsrg-slide-block-link"></a>
 					<div class="fsrg-slide-content">
-
-						<div class="fsrg-slide-content-title"><a href="<?php echo $entry['tour_link']; ?>"
-								class="fsrg-slide-content-link"><?php echo $entry['title']; ?></a></div>
-						<div class="fsrg-slide-content-date"><a href="<?php echo $entry['tour_link']; ?>"
-								class="fsrg-slide-content-link"><?php echo $entry['date']; ?></a></div>
-						<?php if ($entry['ticket_link']) { ?>
-							<div class="fsrg-slider-button">
-								<div class="wp-block-buttons">
-									<div class="wp-block-button">
-										<a class="fsrg-slider-button wp-block-button__link wp-element-button"
-											href="<?php echo $entry['ticket_link']; ?>"
-											style="border-radius:0px"><?php echo $buttonText; ?></a>
-									</div>
+						<?php // ensure the slide text is clickable ?>
+						<a href="<?php echo $entry['tour_link']; ?>" class="fsrg-slide-block-link"></a>
+						<div class="fsrg-slide-content-blur">
+							<div class="fsrg-slide-content-date"><?php echo $entry['date']; ?></div>
+							<div class="fsrg-slide-content-title"><?php echo $entry['title']; ?></div>
+						</div>
+					</div>
+					<?php if ($entry['ticket_link']) { ?>
+						<div class="fsrg-slider-button">
+							<div class="wp-block-buttons">
+								<div class="wp-block-button">
+									<a class="fsrg-slider-button wp-block-button__link wp-element-button"
+										href="<?php echo $entry['ticket_link']; ?>"
+										style="border-radius:0px"><?php echo $buttonText; ?></a>
 								</div>
 							</div>
-						<?php } ?>
-					</div>
+						</div>
+					<?php } ?>
 				</div>
 				<?php
 			}

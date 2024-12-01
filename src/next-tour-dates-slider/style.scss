@@ -1,20 +1,16 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
-
 .fsrg-swiper {
+	// start of the carousel slider
+	// ensure its full width with the parent container
+
 	width: 100%;
 	height: var(--fsrg-slider-height-desktop);
-	// same green as for buttons etc
 	--swiper-pagination-color: var(--fsrg-slider-active-color);
 	--swiper-pagination-bullet-inactive-color: var(--fsrg-slider-inactive-color);
 }
 
 .fsrg-swiper-slide {
+	// each slide in the carousel
+
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -27,6 +23,8 @@
 
 
 .fsrg-swiper-slide::before {
+	// create a blur effect on the background image
+
 	content: "";
 	position: absolute;
 	top: -10px;
@@ -38,22 +36,56 @@
 	z-index: 1;
 }
 
+.fsrg-swiper-slide a {
+	// remove any text decoration for any links defined
+	// inside a slide
+
+	text-decoration: none;
+}
+
 .fsrg-slide-content {
+	// the text content of each slide, always centered
+
 	position: relative;
 	z-index: 4;
 	text-align: center;
+
+	// width: 100%;
+	// padding: 0;
+	margin: 2rem 0 0.5rem 0;
 }
 
+// .fsrg-slide-content-blur {
+// 	// create a blurred background behind the text content
+// 	// to make it easier to read
 
-// https://stackoverflow.com/questions/796087/make-a-div-into-a-link
-.fsrg-slide-link {
+// 	// position: relative;
+// 	// z-index: 2;
+// 	// text-align: center;
+// 	// color: white;
+// 	padding: 10px 20px;
+// 	border-radius: 5px;
+// 	/* Optional */
+// 	background: rgba(0, 0, 0, 0.3);
+// 	/* Fallback for older browsers */
+// 	// backdrop-filter: blur(10px);
+// 	// // /* Creates the blur effect */
+// 	display: inline-block;
+// 	/* Ensure proper sizing */
+// 	margin: auto;
+// }
+
+
+
+.fsrg-slide-block-link {
+	// make the whole slide clickable
+	// https://stackoverflow.com/questions/796087/make-a-div-into-a-link
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	/* No underlines on the link */
-	text-decoration: none;
+
 	/* Places the link above everything else in the div */
 	z-index: 4;
 	/* Fix to make div clickable in IE */
@@ -64,35 +96,32 @@
 	filter: alpha(opacity=1);
 }
 
-.fsrg-slide-content-link {
-	text-decoration: none;
-}
-
 .fsrg-slide-content-title {
-	font-size: 3rem;
-	font-weight: bolder;
+	font-size: 3rem !important;
 	color: var(--fsrg-slider-text-color) !important;
-	margin: 8rem 0 0.5rem 0;
-	padding: 0;
-	text-shadow: 0 0 1px var(--fsrg-slider-active-color);
+	text-shadow: 0 0 2px var(--fsrg-slider-active-color);
 }
 
 .fsrg-slide-content-date {
-	font-size: 2rem;
-	font-weight: bolder;
+	font-size: 2rem !important;
+	// margin: 2rem 0 0.5rem 0;
 	color: var(--fsrg-slider-text-color);
 }
 
 .fsrg-slider-button {
-	position: relative;
-	top: 15%;
-
+	// aligns with width of tickets buttom in website footer!
+	width: 91px;
+	position: absolute;
+	/* Pin the button */
+	bottom: 20px;
+	/* Distance from the bottom of the slide */
+	left: 50%;
+	/* Center horizontally */
+	transform: translateX(-50%);
+	/* Adjust for button width to center it */
 	z-index: 9;
-	pointer-events: auto;
-
+	/* Ensure it appears above other elements */
 }
-
-
 
 // on mobile view the height and width need to be different
 @media (max-width: 768px) {
@@ -105,16 +134,17 @@
 	}
 
 	.fsrg-slide-content-title {
-		font-size: 2rem;
-		margin: 5rem 0 0.5rem 0;
+		font-size: 2rem !important;
 	}
 
 	.fsrg-slide-content-date {
-		font-size: 1.8rem;
+		font-size: 1.5rem !important;
 	}
 
-	// .fsrg-slider-button {
-	// 	top: 130%;
+	// .fsrg-slide-content-blur {
+	// 	width: 100%;
+	// 	max-width: none;
+	// 	margin: none;
+	// 	/* Remove any restrictions */
 	// }
-
 }
