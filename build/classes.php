@@ -168,16 +168,26 @@ class TourDates
 	private function set_carousel_picture(): void
 	{
 		try {
-			$this->carousel_picture = get_field(FSRG_RUNDGANG_CAROUSEL_PICTURE_FIELD, $this->post_id);
+			$field = get_field(FSRG_RUNDGANG_CAROUSEL_PICTURE_FIELD, $this->post_id);
+			if ($field === null) {
+				$this->carousel_picture = "";
+			} else {
+				$this->carousel_picture = $field;
+			}
 		} catch (Exception $e) {
-			$this->carousel_picture = null;
+			$this->carousel_picture = "";
 		}
 	}
 
 	private function set_show_in_home_carousel(): void
 	{
 		try {
-			$this->show_in_homepage_carousel = get_field(FSRG_RUNDGANG_CAROUSEL_SHOW_ON_HOMEPAGE_FIELD, $this->post_id);
+			$field = get_field(FSRG_RUNDGANG_CAROUSEL_SHOW_ON_HOMEPAGE_FIELD, $this->post_id);
+			if ($field === null) {
+				$this->show_in_homepage_carousel = false;
+			} else {
+				$this->show_in_homepage_carousel = $field;
+			}
 		} catch (Exception $e) {
 			$this->show_in_homepage_carousel = false;
 		}
@@ -186,9 +196,14 @@ class TourDates
 	private function set_carousel_picture_position(): void
 	{
 		try {
-			$this->carousel_picture_position = get_field(FSRG_RUNDGANG_CAROUSEL_PICTURE_POSITION_FIELD, $this->post_id);
+			$field = get_field(FSRG_RUNDGANG_CAROUSEL_PICTURE_POSITION_FIELD, $this->post_id);
+			if ($field === null) {
+				$this->carousel_picture_position = "";
+			} else {
+				$this->carousel_picture_position = $field;
+			}
 		} catch (Exception $e) {
-			$this->carousel_picture_position = null;
+			$this->carousel_picture_position = "";
 		}
 	}
 
