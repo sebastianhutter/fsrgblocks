@@ -91,13 +91,13 @@
 }
 
 .fsrg-slide-content-title {
-	font-size: 3rem !important;
+	font-size: var(--fsrg-slider-font-size-title-desktop) !important;
 	color: var(--fsrg-slider-text-color) !important;
 	text-shadow: 1px 0px 1px var(--fsrg-slider-text-shadow-color);
 }
 
 .fsrg-slide-content-date {
-	font-size: 2rem !important;
+	font-size: var(--fsrg-slider-font-size-date-desktop) !important;
 	color: var(--fsrg-slider-text-color) !important;
 	text-shadow: 1px 0px 1px var(--fsrg-slider-text-shadow-color);
 }
@@ -117,15 +117,18 @@
 	/* Ensure it appears above other elements */
 }
 
+
+$mobile-breakpoint: 768px;
+
 // on mobile view the height and width need to be different
-@media (min-width: 768px) {
+@media (min-width: $mobile-breakpoint) {
 	.fsrg-swiper {
 		// ensure the slider is readable on smaller screens too! (e.g. fullhd televisions etc)
 		min-height: 285px;
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: $mobile-breakpoint) {
 	.fsrg-swiper {
 		height: var(--fsrg-slider-height-mobile);
 	}
@@ -135,10 +138,10 @@
 	}
 
 	.fsrg-slide-content-title {
-		font-size: 2rem !important;
+		font-size: var(--fsrg-slider-font-size-title-mobile) !important;
 	}
 
 	.fsrg-slide-content-date {
-		font-size: 1.8rem !important;
+		font-size: var(--fsrg-slider-font-size-date-mobile) !important;
 	}
 }

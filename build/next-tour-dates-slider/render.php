@@ -39,6 +39,10 @@ $colorInactive = $attributes['colorInactive'];
 $colorText = $attributes['colorText'];
 $colorTextShadow = $attributes['colorTextShadow'];
 $colorBackground = $attributes['colorBackground'];
+$fontSizeTitleDesktop = $attributes['fontSizeTitleDesktop'];
+$fontSizeTitleMobile = $attributes['fontSizeTitleMobile'];
+$fontSizeDateDesktop = $attributes['fontSizeDateDesktop'];
+$fontSizeDateMobile = $attributes['fontSizeDateMobile'];
 
 
 // add styles for scss
@@ -52,6 +56,10 @@ $styles .= "--fsrg-slider-inactive-color: " . $colorInactive . ";";
 $styles .= "--fsrg-slider-text-color: " . $colorText . ";";
 $styles .= "--fsrg-slider-text-shadow-color: " . $colorTextShadow . ";";
 $styles .= "--fsrg-slider-background-color: " . $colorBackground . ";";
+$styles .= "--fsrg-slider-font-size-title-desktop: " . $fontSizeTitleDesktop . "rem;";
+$styles .= "--fsrg-slider-font-size-title-mobile: " . $fontSizeTitleMobile . "rem;";
+$styles .= "--fsrg-slider-font-size-date-desktop: " . $fontSizeDateDesktop . "rem;";
+$styles .= "--fsrg-slider-font-size-date-mobile: " . $fontSizeDateMobile . "rem;";
 
 $all_tours = new AllTourDates();
 

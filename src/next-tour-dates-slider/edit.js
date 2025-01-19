@@ -127,6 +127,43 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</FlexItem>
 			</Flex>
+			<h4>{__('Schrift', 'fsrgblocks')}</h4>
+			<Flex>
+				<FlexItem style={{ flexBasis: '50%' }}>
+					<TextControl
+						label={__('Schriftgroesse Titel auf Desktop', 'fsrgblocks')}
+						value={attributes.fontSizeTitleDesktop}
+						type="number"
+						onChange={(value) => setAttributes({ fontSizeTitleDesktop: value })}
+					/>
+				</FlexItem>
+				<FlexItem style={{ flexBasis: '50%' }}>
+					<TextControl
+						label={__('Schriftgroesse Titel auf Mobile', 'fsrgblocks')}
+						value={attributes.fontSizeTitleMobile}
+						type="number"
+						onChange={(value) => setAttributes({ fontSizeTitleMobile: value })}
+					/>
+				</FlexItem>
+			</Flex>
+			<Flex>
+				<FlexItem style={{ flexBasis: '50%' }}>
+					<TextControl
+						label={__('Schriftgroesse Datum auf Desktop', 'fsrgblocks')}
+						value={attributes.fontSizeDateDesktop}
+						type="number"
+						onChange={(value) => setAttributes({ fontSizeDateDesktop: value })}
+					/>
+				</FlexItem>
+				<FlexItem style={{ flexBasis: '50%' }}>
+					<TextControl
+						label={__('Schriftgroesse Datum auf Mobile', 'fsrgblocks')}
+						value={attributes.fontSizeDateMobile}
+						type="number"
+						onChange={(value) => setAttributes({ fontSizeDateMobile: value })}
+					/>
+				</FlexItem>
+			</Flex>
 			<h4>{__('Farben', 'fsrgblocks')}</h4>
 			<Flex>
 				<FlexItem style={{ flexBasis: '50%' }}>

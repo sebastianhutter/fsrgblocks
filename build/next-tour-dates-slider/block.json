@@ -58,6 +58,22 @@
       "type": "string",
       "default": "85"
     },
+    "fontSizeTitleDesktop": {
+      "type": "string",
+      "default": "3"
+    },
+    "fontSizeTitleMobile": {
+      "type": "string",
+      "default": "2"
+    },
+    "fontSizeDateDesktop": {
+      "type": "string",
+      "default": "2"
+    },
+    "fontSizeDateMobile": {
+      "type": "string",
+      "default": "1.8"
+    },
     "autoPlayDelayInMs": {
       "type": "string",
       "default": "4000"
